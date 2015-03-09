@@ -371,6 +371,9 @@ class ScanningTemplate(object):
         # update time
         self.properties.CurrentDate = _current_time()
 
+        # set rubber band to true
+        self.properties.EnableRubberBand = 'true'
+
         # update start position
         self.update_start_position()
 
