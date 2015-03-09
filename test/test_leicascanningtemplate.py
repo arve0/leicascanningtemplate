@@ -4,7 +4,7 @@ Tests for `ScanningTemplate` class.
 import pytest
 from lxml import objectify
 from py import path
-from leicascanningtemplate import ScanningTemplate
+from ..leicascanningtemplate import ScanningTemplate
 
 
 @pytest.fixture
