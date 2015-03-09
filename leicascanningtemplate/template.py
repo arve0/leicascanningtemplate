@@ -347,13 +347,13 @@ class ScanningTemplate(object):
 
         # fix format quirks
         # add carriage return character
-        xml = '\r\n'.join(l.decode(encoding='utf8') for l in xml.splitlines())
+        xml = u'\r\n'.join(l.decode(encoding='utf8') for l in xml.splitlines())
         # add space at "end/>" --> "end />"
         xml = re.sub(r'(["a-z])/>', r'\1 />', xml)
         xml = xml.replace("version='1.0' encoding='utf8'", 'version="1.0"')
 
-        with open(filename, 'w') as f:
-            f.write(xml)
+        with open(filename, 'wb') as f:
+            f.write(xml.encode('utf8'))
 
 
 def _current_time():
