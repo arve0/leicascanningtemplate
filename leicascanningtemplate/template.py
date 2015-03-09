@@ -282,6 +282,8 @@ class ScanningTemplate(object):
         # append well to ScanWellArray
         base_well.attrib['WellX'] = str(well_x)
         base_well.attrib['WellY'] = str(well_y)
+        base_well.attrib['FieldXStartCoordinate'] = str(start_x)
+        base_well.attrib['FieldYStartCoordinate'] = str(start_y)
         self.well_array.append(base_well)
 
         # append fields to ScanFieldArray
@@ -309,6 +311,49 @@ class ScanningTemplate(object):
                 base_field.attrib['LabelY'] = y_label
 
                 self.field_array.append(base_field)
+
+
+    def move_well(self, well_x, well_y, start_x, start_y):
+        """Move well and associated scan fields. Spacing between
+        fields will be what Properties/ScanFieldStageDistance is set to.
+
+        Parameters
+        ----------
+        well_x : int
+        well_y : int
+        start_x : int
+            In meters. FieldXCoordinate of first field in well.
+        start_y : int
+            In meters. FieldYCoordinate of first field in well.
+
+        Raises
+        ------
+        ValueError
+            If specified well or associated fields does not exist.
+        """
+        # raise ValueError if well or fields doesnt exist
+        if not self.well_exists(well_x, well_y):
+            raise ValueError('Well not found in ScanWellArray')
+
+        fields = self.well_fields(well_x, well_y)
+        if len(fields) == 0:
+            raise ValueError('Fields belonging to well not found in ScanFieldArray')
+
+        well = deepcopy(self.well(well_x, well_y))
+
+        # update well start coordinate
+        well.attrib['FieldXStartCoordinate'] = str(start_x)
+        well.attrib['FieldYStartCoordinate'] = str(start_y)
+
+        # update fields coordinates
+        x_dist = float(self.properties.ScanFieldStageDistanceX) * 1e-6 # in um
+        y_dist = float(self.properties.ScanFieldStageDistanceY) * 1e-6
+
+        for field in fields:
+            i = int(field.attrib['FieldX'])
+            j = int(field.attrib['FieldY'])
+            field.FieldXCoordinate = start_x + (i - 1)*x_dist
+            field.FieldYCoordinate = start_y + (j - 1)*y_dist
 
 
     def write(self, filename=None):
