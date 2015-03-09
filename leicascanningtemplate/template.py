@@ -348,7 +348,7 @@ class ScanningTemplate(object):
 
             # fix format quirks
             # add carriage return character
-            xml = '\r\n'.join(xml.splitlines())
+            xml = '\r\n'.join(str(l) for l in xml.splitlines())
             # add space at "end/>" --> "end />"
             xml = re.sub(r'(["a-z])/>', r'\1 />', xml)
             xml = xml.replace("version='1.0' encoding='utf8'", 'version="1.0"')
