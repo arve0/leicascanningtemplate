@@ -1,4 +1,4 @@
-import time
+import time, re
 from lxml import objectify, etree
 from copy import deepcopy
 
@@ -149,8 +149,12 @@ class ScanningTemplate(object):
         "Set start position of experiment to position of first field."
         x_start = self.field_array.ScanFieldData.FieldXCoordinate
         y_start = self.field_array.ScanFieldData.FieldYCoordinate
-        self.properties.ScanFieldStageStartPositionX = x_start * 1e6 # in um
-        self.properties.ScanFieldStageStartPositionY = y_start * 1e6
+
+        # empty template have all fields positions set to zero
+        # --> avoid overwriting start position
+        if x_start != 0 and y_start != 0:
+            self.properties.ScanFieldStageStartPositionX = x_start * 1e6 # in um
+            self.properties.ScanFieldStageStartPositionY = y_start * 1e6
 
 
     def update_well_positions(self):
@@ -341,6 +345,14 @@ class ScanningTemplate(object):
 
             xml = etree.tostring(self.root, encoding='utf8',
                                  xml_declaration=True, pretty_print=True)
+
+            # fix format quirks
+            # add carriage return character
+            xml = '\r\n'.join(xml.splitlines())
+            # add space at "end/>" --> "end />"
+            xml = re.sub(r'(["a-z])/>', r'\1 />', xml)
+            xml = xml.replace("version='1.0' encoding='utf8'", 'version="1.0"')
+
             f.write(xml)
 
 
