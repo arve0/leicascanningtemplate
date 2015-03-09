@@ -339,7 +339,7 @@ class ScanningTemplate(object):
         if len(fields) == 0:
             raise ValueError('Fields belonging to well not found in ScanFieldArray')
 
-        well = deepcopy(self.well(well_x, well_y))
+        well = self.well(well_x, well_y)
 
         # update well start coordinate
         well.attrib['FieldXStartCoordinate'] = str(start_x)
