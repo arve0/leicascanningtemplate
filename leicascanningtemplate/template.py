@@ -335,24 +335,24 @@ class ScanningTemplate(object):
         # update counts
         self.update_counts()
 
-        with open(filename, 'wb') as f:
-            # remove py:pytype attributes
-            objectify.deannotate(self.root)
+        # remove py:pytype attributes
+        objectify.deannotate(self.root)
 
-            # remove namespaces added by lxml
-            for child in self.root.iterchildren():
-                etree.cleanup_namespaces(child)
+        # remove namespaces added by lxml
+        for child in self.root.iterchildren():
+            etree.cleanup_namespaces(child)
 
-            xml = etree.tostring(self.root, encoding='utf8',
-                                 xml_declaration=True, pretty_print=True)
+        xml = etree.tostring(self.root, encoding='utf8',
+                             xml_declaration=True, pretty_print=True)
 
-            # fix format quirks
-            # add carriage return character
-            xml = '\r\n'.join(str(l) for l in xml.splitlines())
-            # add space at "end/>" --> "end />"
-            xml = re.sub(r'(["a-z])/>', r'\1 />', xml)
-            xml = xml.replace("version='1.0' encoding='utf8'", 'version="1.0"')
+        # fix format quirks
+        # add carriage return character
+        xml = '\r\n'.join(str(l) for l in xml.splitlines())
+        # add space at "end/>" --> "end />"
+        xml = re.sub(r'(["a-z])/>', r'\1 />', xml)
+        xml = xml.replace("version='1.0' encoding='utf8'", 'version="1.0"')
 
+        with open(filename, 'w') as f:
             f.write(xml)
 
 
