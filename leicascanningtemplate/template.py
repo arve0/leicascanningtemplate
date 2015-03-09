@@ -153,8 +153,8 @@ class ScanningTemplate(object):
         # empty template have all fields positions set to zero
         # --> avoid overwriting start position
         if x_start != 0 and y_start != 0:
-            self.properties.ScanFieldStageStartPositionX = x_start * 1e6 # in um
-            self.properties.ScanFieldStageStartPositionY = y_start * 1e6
+            self.properties.ScanFieldStageStartPositionX = int(x_start * 1e6) # in um
+            self.properties.ScanFieldStageStartPositionY = int(y_start * 1e6)
 
 
     def update_well_positions(self):
