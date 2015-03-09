@@ -26,16 +26,19 @@ class ScanningTemplate(object):
         tree = objectify.parse(filename)
         self.root = tree.getroot()
 
+
     @property
     def properties(self):
         "Short hand for ``self.root.ScanningTemplate.Properties``"
         return self.root.ScanningTemplate.Properties
+
 
     # WELLS
     @property
     def well_array(self):
         "Short hand for ``self.root.ScanWellArray``"
         return self.root.ScanWellArray
+
 
     @property
     def wells(self):
@@ -49,6 +52,7 @@ class ScanningTemplate(object):
             return self.root.ScanWellArray.ScanWellData[:]
         except AttributeError:
             return []
+
 
     def well_fields(self, well_x=1, well_y=1):
         """All ScanFieldData elements of given well.
@@ -67,6 +71,7 @@ class ScanningTemplate(object):
         xpath += _xpath_attrib('WellX', well_x)
         xpath += _xpath_attrib('WellY', well_y)
         return self.root.findall(xpath)
+
 
     def well(self, well_x=1, well_y=1):
         """ScanWellData of specific well.
@@ -102,11 +107,13 @@ class ScanningTemplate(object):
         """
         return self.well(well_x, well_y).attrib
 
+
     # FIELDS
     @property
     def field_array(self):
         "Short hand for ``self.root.ScanFieldArray``"
         return self.root.ScanFieldArray
+
 
     @property
     def fields(self):
@@ -120,6 +127,7 @@ class ScanningTemplate(object):
             return self.root.ScanFieldArray.ScanFieldData[:]
         except AttributeError:
             return []
+
 
     def field(self, well_x=1, well_y=1, field_x=1, field_y=1):
         """ScanFieldData of specified field.
@@ -187,6 +195,7 @@ class ScanningTemplate(object):
         xs = set([w.attrib['WellX'] for w in self.wells])
         ys = set([w.attrib['WellY'] for w in self.wells])
         return (len(xs), len(ys))
+
 
     @property
     def count_of_assigned_jobs(self):
@@ -404,9 +413,11 @@ class ScanningTemplate(object):
             f.write(xml.encode('utf8'))
 
 
+
 def _current_time():
     "Time formatted as `Monday, February 09, 2015 | 8:12 PM`"
     return time.strftime('%A, %B %d, %Y | %I:%M %p')
+
 
 def _xpath_attrib(attrib, value):
     """Returns string ``[@attrib="value"]``.
