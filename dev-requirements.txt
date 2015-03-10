@@ -1,4 +1,4 @@
+-r requirements.txt
+-r docs/requirements.txt
 tox
 flake8
-wheel>=0.22
-lxml
