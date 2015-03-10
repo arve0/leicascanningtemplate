@@ -38,10 +38,10 @@ coverage:
 	coverage html
 	open htmlcov/index.html
 
+api-docs:
+	sphinx-apidoc -Mf -o docs/ leicascanningtemplate
+
 docs:
-	rm -f docs/leicascanningtemplate.rst
-	rm -f docs/modules.rst
-	sphinx-apidoc -M -o docs/ leicascanningtemplate
 	$(MAKE) -C docs clean
 	$(MAKE) -C docs html
 	open docs/_build/html/index.html
