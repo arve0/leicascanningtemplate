@@ -6,9 +6,9 @@ class ScanningTemplate(object):
     """Python object of Leica LAS Matrix Screener Scanning Template XML.
     Provides easy access to elements via attributes:
 
-        tmpl = ScanningTemplate('{ScanningTemplate}tmpl.xml')
-        # attributes of MatrixScreenerTemplate/ScanningTemplate/Properties
-        print(tmpl.properties.attrib)
+        >>> tmpl = ScanningTemplate('{ScanningTemplate}tmpl.xml')
+        >>> # attributes of MatrixScreenerTemplate/ScanningTemplate/Properties
+        >>> print(tmpl.properties.attrib)
 
     Parameters
     ----------
