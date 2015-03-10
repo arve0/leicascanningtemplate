@@ -27,7 +27,7 @@ http://leicascanningtemplate.readthedocs.org/
 
 
 ## Development
-Install dependencies and link working version of leicascanningtemplate to pip:
+Install dependencies and link development version of leicascanningtemplate to pip:
 ```bash
 pip install -r dev-requirements.txt
 ./setup.py develop
