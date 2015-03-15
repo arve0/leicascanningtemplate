@@ -1,3 +1,4 @@
 wheel>=0.22
+setuptools-git
 
 -e .
