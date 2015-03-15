@@ -13,7 +13,7 @@ Attributes can be retrieved property `attrib` on the element:
 
 Updating values:
 - `tmpl.properties.ScanFieldStageDistanceX = 400`
-- `tmpl.properties.attrib['TotalCountOfWells'] # updated automatic upon tmpl.write()`
+- `tmpl.properties.attrib['TotalCountOfWells'] # automatic updated upon tmpl.write()`
 
 
 ## Properties
