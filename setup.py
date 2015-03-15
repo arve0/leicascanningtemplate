@@ -2,23 +2,15 @@
 
 import os
 import sys
+from setuptools import setup
 
-try:
-    from setuptools import setup
-except ImportError:
-    from distutils.core import setup
-
-
-if sys.argv[-1] == 'publish':
-    os.system('python setup.py sdist upload')
-    sys.exit()
 
 os.system('make rst')
 readme = open('README.rst').read()
 
 setup(
     name='leicascanningtemplate',
-    version='0.0.1',
+    version=open(os.path.join('leicascanningtemplate', 'VERSION')).read().strip(),
     description='convenience library for talking with leica matrix screener scanning templates',
     long_description=readme,
     author='Arve Seljebu',
@@ -28,14 +20,16 @@ setup(
         'leicascanningtemplate',
     ],
     package_dir={'leicascanningtemplate': 'leicascanningtemplate'},
+    package_data={'leicascanningtemplate': ['VERSION']},
     include_package_data=True,
     install_requires=[
+        'lxml'
     ],
     license='MIT',
     zip_safe=False,
     keywords='leicascanningtemplate',
     classifiers=[
-        'Development Status :: 2 - Pre-Alpha',
+        'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
@@ -43,6 +37,5 @@ setup(
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.4',
-        'Programming Language :: Python :: Implementation :: PyPy',
     ],
 )
