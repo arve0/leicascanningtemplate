@@ -4,7 +4,8 @@
 [![pypi-version]][pypi]
 
 ## Overview
-Convenience library for talking with Leica matrix screener scanning template XMLs.
+Convenience library for talking with Leica matrix screener scanning
+template XMLs.
 
 ## Installation
 Install using `pip`...
@@ -20,14 +21,22 @@ from leicaleicascanningtemplate import ScanningTemplate
 tmpl = ScanningTemplate('path/to/scantempl.xml')
 tmpl.add_well(well_x=2, well_y=3, start_x=30e-3, start_y=44e-3)
 tmpl.write()
+
+# x stage position of field
+print(tmpl.field(well_x=1, well_y=1, field_x=1, field_y=1).FieldXCoordinate)
 ```
 
-## API reference
-http://leicascanningtemplate.readthedocs.org/
+Read more on available elements and attributes in
+[SCANNINGTEMPLATE.md](SCANNINGTEMPLATE.md).
+
+## Documentation
+Read about available commands in the API reference:
+http://leicascanningtemplate.rtfd.org/
 
 
 ## Development
-Install dependencies and link development version of leicascanningtemplate to pip:
+Install dependencies and link development version of leicascanningtemplate
+to pip:
 ```bash
 pip install -r dev-requirements.txt
 ./setup.py develop
@@ -35,15 +44,11 @@ pip install -r dev-requirements.txt
 
 ### Testing
 ```bash
+pip install tox
 tox
 ```
 
 ### Build documentation locally
-To build the documentation, you'll need sphinx:
-```bash
-pip install -r docs/requirements.txt
-```
-
 To build the documentation:
 ```bash
 make docs

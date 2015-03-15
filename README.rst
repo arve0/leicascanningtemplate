@@ -29,10 +29,16 @@ Example
     tmpl.add_well(well_x=2, well_y=3, start_x=30e-3, start_y=44e-3)
     tmpl.write()
 
-API reference
+    # x stage position of field
+    print(tmpl.field(well_x=1, well_y=1, field_x=1, field_y=1).FieldXCoordinate)
+
+Read more on available elements and attributes in [SCANNINGTEMPLATE.md].
+
+Documentation
 -------------
 
-http://leicascanningtemplate.readthedocs.org/
+Read about available commands in the API reference:
+http://leicascanningtemplate.rtfd.org/
 
 Development
 -----------
@@ -50,16 +56,11 @@ Testing
 
 .. code:: bash
 
+    pip install tox
     tox
 
 Build documentation locally
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-To build the documentation, you'll need sphinx:
-
-.. code:: bash
-
-    pip install -r docs/requirements.txt
 
 To build the documentation:
 
