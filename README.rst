@@ -6,13 +6,8 @@ leicascanningtemplate
 Overview
 --------
 
-convenience library for talking with leica matrix screener scanning
-templates
-
-Requirements
-------------
-
--  Python (2.7, 3.4)
+Convenience library for talking with Leica matrix screener scanning
+template XMLs.
 
 Installation
 ------------
@@ -26,25 +21,39 @@ Install using ``pip``...
 Example
 -------
 
-TODO: Write example.
+.. code:: python
 
-Testing
--------
+    from leicaleicascanningtemplate import ScanningTemplate
 
-Install testing requirements:
+    tmpl = ScanningTemplate('path/to/scantempl.xml')
+    tmpl.add_well(well_x=2, well_y=3, start_x=30e-3, start_y=44e-3)
+    tmpl.write()
+
+API reference
+-------------
+
+http://leicascanningtemplate.readthedocs.org/
+
+Development
+-----------
+
+Install dependencies and link development version of
+leicascanningtemplate to pip:
 
 .. code:: bash
 
-    pip install tox
+    pip install -r dev-requirements.txt
+    ./setup.py develop
 
-Run:
+Testing
+~~~~~~~
 
 .. code:: bash
 
     tox
 
-Documentation
--------------
+Build documentation locally
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To build the documentation, you'll need sphinx:
 
