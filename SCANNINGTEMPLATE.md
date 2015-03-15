@@ -8,12 +8,13 @@ Here is an overview of whats available in the scanning template:
 Element values can be retrieved by their name:
 `tmpl.properties.ScanFieldStageDistanceX`
 
-Attributes can be retrieved by the elment property `attrib`:
+Attributes can be retrieved property `attrib` on the element:
 `tmpl.properties.attrib`
 
 Updating values:
 - `tmpl.properties.ScanFieldStageDistanceX = 400`
 - `tmpl.properties.attrib['TotalCountOfWells'] # updated automatic upon tmpl.write()`
+
 
 ## Properties
 Xpath: `MatrixScreenerTemplate/ScanningTemplate/Properties`

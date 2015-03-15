@@ -32,7 +32,8 @@ Example
     # x stage position of field
     print(tmpl.field(well_x=1, well_y=1, field_x=1, field_y=1).FieldXCoordinate)
 
-Read more on available elements and attributes in [SCANNINGTEMPLATE.md].
+Read more on available elements and attributes in
+`SCANNINGTEMPLATE.md <SCANNINGTEMPLATE.md>`__.
 
 Documentation
 -------------
