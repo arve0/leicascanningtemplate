@@ -17,6 +17,8 @@ class ScanningTemplate(object):
 
     Attributes
     ----------
+    filename : str
+        Path XML-filename.
     root : lxml.objectify.ObjectifiedElement
         Objectified root of loaded XML.
         See http://lxml.de/objectify.html#the-lxml-objectify-api
