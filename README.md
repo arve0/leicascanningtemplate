@@ -44,13 +44,13 @@ pip install -r dev-requirements.txt
 
 ### Testing
 ```bash
-pip install tox
 tox
 ```
 
 ### Build documentation locally
 To build the documentation:
 ```bash
+pip install -r docs/requirements.txt
 make docs
 ```
 
