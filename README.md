@@ -57,5 +57,5 @@ make docs
 
 [build-status-image]: https://secure.travis-ci.org/arve0/leicascanningtemplate.png?branch=master
 [travis]: http://travis-ci.org/arve0/leicascanningtemplate?branch=master
-[pypi-version]: https://pypip.in/version/leicascanningtemplate/badge.svg
+[pypi-version]: https://img.shields.io/pypi/v/leicascanningtemplate.svg
 [pypi]: https://pypi.python.org/pypi/leicascanningtemplate
